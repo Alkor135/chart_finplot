@@ -58,22 +58,26 @@ def volume_stops(df):
     # Проверка условий для каждой строки
     for i in range(2, len(df)):
         if (df['volume'][i - 2] < df['volume'][i - 1] < df['volume'][i] and
-                df['open'][i - 2] >= df['close'][i - 2] and df['open'][i - 1] >= df['close'][i - 1] and
+                df['open'][i - 2] >= df['close'][i - 2] and
+                df['open'][i - 1] >= df['close'][i - 1] and
                 df['open'][i] <= df['close'][i]):
             df.at[i, 'long1'] = df['low'][i] - 40
 
         if (df['volume'][i - 2] < df['volume'][i - 1] < df['volume'][i] and
-                df['open'][i - 2] <= df['close'][i - 2] and df['open'][i - 1] <= df['close'][i - 1] and
+                df['open'][i - 2] <= df['close'][i - 2] and
+                df['open'][i - 1] <= df['close'][i - 1] and
                 df['open'][i] >= df['close'][i]):
             df.at[i, 'short1'] = df['high'][i] + 40
 
         if (df['volume'][i - 2] > df['volume'][i - 1] > df['volume'][i] and
-                df['open'][i - 2] >= df['close'][i - 2] and df['open'][i - 1] >= df['close'][i - 1] and
+                df['open'][i - 2] >= df['close'][i - 2] and
+                df['open'][i - 1] >= df['close'][i - 1] and
                 df['open'][i] <= df['close'][i]):
             df.at[i, 'long2'] = df['low'][i] - 40
 
         if (df['volume'][i - 2] > df['volume'][i - 1] > df['volume'][i] and
-                df['open'][i - 2] <= df['close'][i - 2] and df['open'][i - 1] <= df['close'][i - 1] and
+                df['open'][i - 2] <= df['close'][i - 2] and
+                df['open'][i - 1] <= df['close'][i - 1] and
                 df['open'][i] >= df['close'][i]):
             df.at[i, 'short2'] = df['high'][i] + 40
 
